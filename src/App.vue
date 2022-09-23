@@ -9,8 +9,14 @@ import Store from "@/store";
 Store.useProvider();
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 body {
   margin: 0;
+}
+
+#app {
+  height: 100vh;
+  width: 100vw;
+  position: relative;
 }
 </style>
