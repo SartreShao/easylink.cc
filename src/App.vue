@@ -9,5 +9,8 @@ import Store from "@/store";
 Store.useProvider();
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+body {
+  margin: 0;
+}
 </style>
