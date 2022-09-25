@@ -6,6 +6,9 @@
   <div class="home-container">
     <!-- logo -->
     <img class="logo" src="../assets/logo.png" />
+
+    <!-- button -->
+    <div class="button"></div>
   </div>
 </template>
 
@@ -43,12 +46,27 @@ import { inject, watchEffect } from "vue";
   .logo {
     object-fit: scale-down;
     transition: all 0.15s linear;
-    width: 22.4vw;
+    width: 39.81vh;
     height: 23.33vh;
     &:hover {
       transition: all 0.15s linear;
       margin-left: 1vw;
     }
+  }
+
+  .button {
+    position: relative;
+    transition: all 0.15s linear;
+    cursor: pointer;
+    width: 19.69vw;
+    height: 7.5vh;
+    margin-top: 3.91vw;
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0 0.28vh 0.56vh rgba(0, 0, 0, 0.16);
+    opacity: 1;
+    border-radius: 3.7vh;
+    display: flex;
+    align-items: center;
   }
 }
 </style>
