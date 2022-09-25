@@ -58,13 +58,13 @@ import { inject, watchEffect } from "vue";
     position: relative;
     transition: all 0.15s linear;
     cursor: pointer;
-    width: 19.69vw;
+    width: 35vh;
     height: 7.5vh;
-    margin-top: 3.91vw;
+    margin-top: 6.94vh;
     background: rgba(255, 255, 255, 1);
     box-shadow: 0 0.28vh 0.56vh rgba(0, 0, 0, 0.16);
     opacity: 1;
-    border-radius: 3.7vh;
+    border-radius: 3.75vh;
     display: flex;
     align-items: center;
   }
