@@ -1,4 +1,4 @@
-import Api from "@/model";
+import Api from "@/model/api";
 
 const uploadFile = async (name, file, currentProgress) => {
   // 初始化：当前上传进度
@@ -11,20 +11,24 @@ const uploadFile = async (name, file, currentProgress) => {
 
 /**
  * 上传文件列表
- * @param {*} fileList
- * @param {*} isUploading
- * @param {*} currentProgress
- * @param {*} resultList
+ * @param {Ref<[]>} fileList
+ * @param {Ref<Boolean>} isUploading
+ * @param {Ref<Number>} currentProgress
+ * @param {Ref<[]>} resultList
  */
 const uploadFileList = async (
   fileList,
   isUploading,
   currentProgress,
   currentUploadIndex,
+  currentUploadAmount,
   resultList
 ) => {
   // 修改状态：当前正在上传文件
   isUploading.value = true;
+
+  // 获取文件总数量
+  currentUploadAmount.value = fileList.length;
 
   // 初始化：结果列表
   resultList.value = [];
@@ -41,10 +45,24 @@ const uploadFileList = async (
     const result = await uploadFile(file.name, file, currentProgress);
 
     // 将文件推送到文件列表中
-    resultList.push(result);
+    resultList.value.push(result);
   }
+
+  // 上传结束
+  isUploading.value = false;
 };
+
+const getUploadButtonText = (
+  isUploading,
+  currentUploadAmount,
+  currentUploadIndex,
+  currentProgress
+) =>
+  isUploading.value
+    ? `（${currentUploadIndex.value}/${currentUploadAmount.value}）正在上传...${currentProgress.value}%`
+    : "添加文件，转成云链";
 
 export default {
   uploadFileList,
+  getUploadButtonText,
 };

@@ -12,11 +12,8 @@
       <!-- icon 加号 -->
       <icon-add v-if="!isUploading" class="add-icon"></icon-add>
 
-      <!-- icon Loading -->
-      <icon-loading v-if="isLoading" class="loading-icon"></icon-loading>
-
       <!-- button 文字 -->
-      <div class="button-text">{{ buttonText }}</div>
+      <div class="button-text">{{ uploadButtonText }}</div>
 
       <!-- input -->
       <input
@@ -34,7 +31,6 @@
 import Store from "@/store";
 import { inject, watchEffect, ref } from "vue";
 import IconAdd from "@/components/icons/IconAdd.vue";
-import IconLoading from "@/components/icons/IconLoading.vue";
 import { HomeVM } from "@/viewmodels/index";
 
 // ----------------------------------------------------------------
@@ -42,7 +38,7 @@ import { HomeVM } from "@/viewmodels/index";
 // ----------------------------------------------------------------
 
 // 按钮上的文字
-const buttonText = ref("添加文件，转成云链");
+const uploadButtonText = ref("添加文件，转成云链");
 
 // input 元素
 const inputFile = ref(null);
@@ -56,6 +52,9 @@ const isUploading = ref(false);
 
 // 当前上传进度
 const currentProgress = ref(0);
+
+// 当前上传队列中共有多少文件
+const currentUploadAmount = ref(0);
 
 // 当前上传第几个文件
 const currentUploadIndex = ref(0);
@@ -74,20 +73,24 @@ const inputFileChanged = async (e) => {
     isUploading,
     currentProgress,
     currentUploadIndex,
+    currentUploadAmount,
     resultList
   );
 };
 
+// 更新 UploadButton 上的文字
 watchEffect(() => {
-  // 正在上传
-  if (isUploading.value) {
-    buttonText.value =
-      "正在上传..." + Number(currentProgress.value).toFixed(2) + "%";
-  }
-  // 未上传
-  else {
-    buttonText.value = "添加文件，转成云链";
-  }
+  uploadButtonText.value = HomeVM.getUploadButtonText(
+    isUploading,
+    currentUploadAmount,
+    currentUploadIndex,
+    currentProgress
+  );
+});
+
+// 观察 resultList
+watchEffect(() => {
+  console.log("resultList", resultList.value);
 });
 </script>
 
@@ -122,6 +125,7 @@ watchEffect(() => {
     transition: all 0.15s linear;
     width: 39.81vh;
     height: 23.33vh;
+
     &:hover {
       transition: all 0.15s linear;
       margin-left: 1vw;
@@ -146,24 +150,23 @@ watchEffect(() => {
     .add-icon {
       width: 2.31vh;
       height: 2.31vh;
+      margin-right: 2.31vh;
     }
 
-    @keyframes alwaysrotate {
-      100% {
-        transform: rotate(360deg);
-      }
-    }
+    // @keyframes alwaysrotate {
+    //   100% {
+    //     transform: rotate(360deg);
+    //   }
+    // }
 
-    .loading-icon {
-      animation: alwaysrotate 1s infinite;
-      animation-timing-function: ease;
-      width: 2.31vh;
-      height: 2.31vh;
-      margin-left: 2.03vw;
-    }
+    // .loading-icon {
+    //   animation: alwaysrotate 1s infinite;
+    //   animation-timing-function: ease;
+    //   width: 2.31vh;
+    //   height: 2.31vh;
+    // }
 
     .button-text {
-      margin-left: 2.31vh;
       font-size: 2.41vh;
       color: #212121;
       font-family: "思源黑体 Medium";
