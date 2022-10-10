@@ -17,6 +17,7 @@
 
       <!-- input -->
       <input
+        v-show="!isUploading"
         class="file-input"
         type="file"
         multiple="false"
