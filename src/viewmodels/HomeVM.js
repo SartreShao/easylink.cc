@@ -6,7 +6,8 @@ const uploadFile = async (name, file, currentProgress) => {
 
   // 调用 API 上传文件
   const uploadedFile = await Api.uploadFile(name, file, currentProgress);
-  console.log("uploadFile: ", uploadedFile);
+
+  return uploadedFile;
 };
 
 /**
@@ -42,6 +43,7 @@ const uploadFileList = async (
     // 读取文件
     const file = fileList[i];
 
+    // TODO 请补充上传失败逻辑
     // 上传文件
     const result = await uploadFile(file.name, file, currentProgress);
 
