@@ -74,7 +74,8 @@ const inputFileChanged = async (e) => {
     currentProgress,
     currentUploadIndex,
     currentUploadAmount,
-    resultList
+    resultList,
+    inputFile
   );
 };
 

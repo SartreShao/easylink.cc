@@ -9,10 +9,10 @@ export default {
           currentProgress.value = progress.percent;
         },
       });
-      Log.success(result);
+      Log.success("uploadFile", result);
       return result;
     } catch (error) {
-      Log.failure(error);
+      Log.failure("uploadFile", error);
       throw error;
     }
   },
