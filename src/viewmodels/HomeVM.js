@@ -6,7 +6,7 @@ const uploadFile = async (name, file, currentProgress) => {
 
   // 调用 API 上传文件
   const uploadedFile = await Api.uploadFile(name, file, currentProgress);
-  console.log("uploadFile: " + uploadedFile);
+  console.log("uploadFile: ", uploadedFile);
 };
 
 /**
@@ -22,7 +22,8 @@ const uploadFileList = async (
   currentProgress,
   currentUploadIndex,
   currentUploadAmount,
-  resultList
+  resultList,
+  inputFile
 ) => {
   // 修改状态：当前正在上传文件
   isUploading.value = true;
@@ -50,6 +51,9 @@ const uploadFileList = async (
 
   // 上传结束
   isUploading.value = false;
+
+  // 清空 input 组件内容（防止无法上传相同内容）
+  inputFile.value.value = null;
 };
 
 const getUploadButtonText = (
@@ -59,7 +63,9 @@ const getUploadButtonText = (
   currentProgress
 ) =>
   isUploading.value
-    ? `（${currentUploadIndex.value}/${currentUploadAmount.value}）正在上传...${currentProgress.value}%`
+    ? `（${currentUploadIndex.value}/${
+        currentUploadAmount.value
+      }）正在上传...${currentProgress.value.toFixed(2)}%`
     : "添加文件，转成云链";
 
 export default {
