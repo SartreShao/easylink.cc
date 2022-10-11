@@ -26,12 +26,15 @@
       />
     </div>
   </div>
+
+  <upload-finish-dialog></upload-finish-dialog>
 </template>
 
 <script setup>
 import Store from "@/store";
 import { inject, watchEffect, ref } from "vue";
 import IconAdd from "@/components/icons/IconAdd.vue";
+import UploadFinishDialog from "./components/UploadFinishDialog.vue";
 import { HomeVM } from "@/viewmodels/index";
 
 // ----------------------------------------------------------------
