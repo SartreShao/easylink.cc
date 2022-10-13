@@ -4,13 +4,20 @@
     <!-- 弹窗容器 -->
     <div class="dialog-container">
       <!-- 笑脸图标 -->
-      <icon-laugh-face class="icon-laugh-face"></icon-laugh-face>
+      <icon-laugh-face class="icon-laugh-face"> </icon-laugh-face>
 
       <!-- 主标题 -->
       <div class="main-title">{{ mainTitle }}</div>
 
       <!-- 链接列表容器 -->
-      <div class="link-list-container"></div>
+      <div class="link-list-container">
+        <link-item
+          v-for="(item, index) in linkList"
+          :key="index"
+          :name="item.name"
+          :url="item.url"
+        ></link-item>
+      </div>
 
       <!-- 一键复制 -->
       <div class="copy-button">一键复制</div>
@@ -20,7 +27,12 @@
 
 <script setup>
 import IconLaughFace from "@/components/icons/IconLaughFace.vue";
+import LinkItem from "./LinkItem.vue";
 import { ref } from "vue";
+
+defineProps({
+  linkList: [],
+});
 
 const mainTitle = ref("永久云链已生成");
 </script>
@@ -71,6 +83,7 @@ const mainTitle = ref("永久云链已生成");
     display: flex;
     flex-direction: column;
     align-items: center;
+    overflow: scroll;
   }
 
   .copy-button {

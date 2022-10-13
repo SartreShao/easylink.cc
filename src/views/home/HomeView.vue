@@ -27,15 +27,33 @@
     </div>
   </div>
 
-  <upload-finish-dialog></upload-finish-dialog>
+  <!-- 链接列表：上传成功后弹出 -->
+  <link-list-dialog :link-list="linkList"></link-list-dialog>
 </template>
 
 <script setup>
 import Store from "@/store";
 import { inject, watchEffect, ref } from "vue";
 import IconAdd from "@/components/icons/IconAdd.vue";
-import UploadFinishDialog from "./components/UploadFinishDialog.vue";
+import LinkListDialog from "./components/LinkListDialog.vue";
 import { HomeVM } from "@/viewmodels/index";
+
+const linkList = [
+  { url: "https://easylink.cc/xxxxxxxxxxxxxxxxxxxx", name: "3.png" },
+  { url: "https://easylink.cc/xxxxx", name: "3.png" },
+  { url: "https://easylink.cc/xxxxx", name: "3.png" },
+  { url: "https://easylink.cc/xxxxx", name: "3.png" },
+  { url: "https://easylink.cc/xxxxx", name: "3.png" },
+  { url: "https://easylink.cc/xxxxx", name: "3.png" },
+  { url: "https://easylink.cc/xxxxx", name: "3.png" },
+  { url: "https://easylink.cc/xxxxx", name: "3.png" },
+  { url: "https://easylink.cc/xxxxx", name: "3.png" },
+  { url: "https://easylink.cc/xxxxx", name: "3.png" },
+  { url: "https://easylink.cc/xxxxx", name: "3.png" },
+  { url: "https://easylink.cc/xxxxx", name: "3.png" },
+  { url: "https://easylink.cc/xxxxx", name: "3.png" },
+  { url: "https://easylink.cc/xxxxx", name: "3.png" },
+];
 
 // ----------------------------------------------------------------
 // -----------------------界面元素绑定------------------------------
