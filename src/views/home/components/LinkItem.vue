@@ -15,6 +15,8 @@
 </template>
 
 <script setup>
+import { ElMessage } from "element-plus";
+
 defineProps({
   url: String,
   name: String,
@@ -28,6 +30,10 @@ const clickUrl = (url) => {
 // 点击事件：点击复制 url
 const clickCopyUrl = (url) => {
   navigator.clipboard.writeText(url);
+  ElMessage({
+    message: "已复制至剪切板",
+    type: "success",
+  });
 };
 </script>
 
