@@ -20,7 +20,7 @@
       </div>
 
       <!-- 一键复制 -->
-      <div class="copy-button">一键复制</div>
+      <div class="copy-button" @click="copyAllUrl(linkList)">一键复制</div>
 
       <!-- 关闭图标 -->
       <icon-close-dialog
@@ -37,6 +37,7 @@ import IconCloseDialog from "@/components/icons/IconCloseDialog.vue";
 import LinkItem from "./LinkItem.vue";
 import { ref, inject } from "vue";
 import Store from "@/store";
+import { ElMessage } from "element-plus";
 
 defineProps({
   linkList: [],
@@ -51,6 +52,19 @@ const isShowFinishView = inject(Store.isShowFinishView);
 // 点击关闭啊按钮
 const closeDialog = () => {
   isShowFinishView.value = false;
+};
+
+// 复制全部Url
+const copyAllUrl = (linkList) => {
+  let copyText = "";
+  linkList.forEach(
+    (link) => (copyText += `文件名：${link.name}\n轻松云链：${link.url}\n\n`)
+  );
+  navigator.clipboard.writeText(copyText);
+  ElMessage({
+    message: "全部链接已复制",
+    type: "success",
+  });
 };
 </script>
 
