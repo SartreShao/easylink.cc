@@ -1,15 +1,32 @@
 <template>
   <!-- 背景黑色蒙版 -->
-  <div class="background">
+  <div class="background-mask">
     <!-- 弹窗容器 -->
-    <div class="dialog-container"></div>
+    <div class="dialog-container">
+      <!-- 笑脸图标 -->
+      <icon-laugh-face class="icon-laugh-face"></icon-laugh-face>
+
+      <!-- 主标题 -->
+      <div class="main-title">{{ mainTitle }}</div>
+
+      <!-- 链接列表容器 -->
+      <div class="link-list-container"></div>
+
+      <!-- 一键复制 -->
+      <div class="copy-button">一键复制</div>
+    </div>
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import IconLaughFace from "@/components/icons/IconLaughFace.vue";
+import { ref } from "vue";
+
+const mainTitle = ref("永久云链已生成");
+</script>
 
 <style lang="scss" scoped>
-.background {
+.background-mask {
   background: rgba(0, 0, 0, 0.9);
   display: flex;
   align-items: center;
@@ -29,5 +46,46 @@
   background: #262626;
   border-radius: 1.57vh;
   box-shadow: 0 0.28vh 0.56vh rgba(0, 0, 0, 0.16);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .icon-laugh-face {
+    width: 3.7vh;
+    height: 2.56vh;
+    margin-top: 5.56vh;
+  }
+
+  .main-title {
+    font-size: 3.24vh;
+    margin-top: 4.19vh;
+    color: white;
+    font-family: "思源黑体 Bold";
+  }
+
+  .link-list-container {
+    width: 100%;
+    height: 35.65vh;
+    margin-top: 3.7vh;
+    margin-bottom: 3.8vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .copy-button {
+    width: 23.7vw;
+    height: 6.2vh;
+    border-radius: 3.1vh;
+    box-shadow: 0 0.28vh 0.56vh rgba(0, 0, 0, 0.16);
+    cursor: pointer;
+    background: #19725e;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.04vh;
+    color: #ffffff;
+    font-family: "思源黑体 Medium";
+  }
 }
 </style>

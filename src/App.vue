@@ -19,4 +19,6 @@ body {
   width: 100vw;
   position: relative;
 }
+
+@import "@/font/cn_font.css";
 </style>
