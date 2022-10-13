@@ -28,7 +28,7 @@
   </div>
 
   <!-- 链接列表：上传成功后弹出 -->
-  <link-list-dialog :link-list="linkList"></link-list-dialog>
+  <link-list-dialog v-if="false" :link-list="linkList"></link-list-dialog>
 </template>
 
 <script setup>
@@ -37,23 +37,6 @@ import { inject, watchEffect, ref } from "vue";
 import IconAdd from "@/components/icons/IconAdd.vue";
 import LinkListDialog from "./components/LinkListDialog.vue";
 import { HomeVM } from "@/viewmodels/index";
-
-const linkList = [
-  { url: "https://easylink.cc/xxxxxxxxxxxxxxxxxxxx", name: "3.png" },
-  { url: "https://easylink.cc/xxxxx", name: "3.png" },
-  { url: "https://easylink.cc/xxxxx", name: "3.png" },
-  { url: "https://easylink.cc/xxxxx", name: "3.png" },
-  { url: "https://easylink.cc/xxxxx", name: "3.png" },
-  { url: "https://easylink.cc/xxxxx", name: "3.png" },
-  { url: "https://easylink.cc/xxxxx", name: "3.png" },
-  { url: "https://easylink.cc/xxxxx", name: "3.png" },
-  { url: "https://easylink.cc/xxxxx", name: "3.png" },
-  { url: "https://easylink.cc/xxxxx", name: "3.png" },
-  { url: "https://easylink.cc/xxxxx", name: "3.png" },
-  { url: "https://easylink.cc/xxxxx", name: "3.png" },
-  { url: "https://easylink.cc/xxxxx", name: "3.png" },
-  { url: "https://easylink.cc/xxxxx", name: "3.png" },
-];
 
 // ----------------------------------------------------------------
 // -----------------------界面元素绑定------------------------------
@@ -82,7 +65,7 @@ const currentUploadAmount = ref(0);
 const currentUploadIndex = ref(0);
 
 // 上传结果
-const resultList = ref([]);
+const linkList = ref([]);
 
 // 是否显示完成上传弹窗
 // eslint-disable-next-line no-unused-vars
@@ -96,7 +79,7 @@ const inputFileChanged = async (e) => {
     currentProgress,
     currentUploadIndex,
     currentUploadAmount,
-    resultList,
+    linkList,
     inputFile
   );
 };
@@ -111,9 +94,9 @@ watchEffect(() => {
   );
 });
 
-// 观察 resultList
+// 观察 linkList
 watchEffect(() => {
-  console.log("resultList", resultList.value);
+  console.log("linkList", linkList.value);
 });
 </script>
 

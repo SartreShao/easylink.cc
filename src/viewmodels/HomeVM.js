@@ -1,5 +1,12 @@
 import Api from "@/model/api";
 
+/**
+ * 上传文件
+ * @param {s} name
+ * @param {*} file
+ * @param {*} currentProgress
+ * @returns
+ */
 const uploadFile = async (name, file, currentProgress) => {
   // 初始化：当前上传进度
   currentProgress.value = 0;
@@ -15,7 +22,7 @@ const uploadFile = async (name, file, currentProgress) => {
  * @param {Ref<[]>} fileList
  * @param {Ref<Boolean>} isUploading
  * @param {Ref<Number>} currentProgress
- * @param {Ref<[]>} resultList
+ * @param {Ref<[]>} linkList
  */
 const uploadFileList = async (
   fileList,
@@ -23,7 +30,7 @@ const uploadFileList = async (
   currentProgress,
   currentUploadIndex,
   currentUploadAmount,
-  resultList,
+  linkList,
   inputFile
 ) => {
   // 修改状态：当前正在上传文件
@@ -33,7 +40,7 @@ const uploadFileList = async (
   currentUploadAmount.value = fileList.length;
 
   // 初始化：结果列表
-  resultList.value = [];
+  linkList.value = [];
 
   // 上传进程
   for (let i = 0; i < fileList.length; i++) {
@@ -48,7 +55,10 @@ const uploadFileList = async (
     const result = await uploadFile(file.name, file, currentProgress);
 
     // 将文件推送到文件列表中
-    resultList.value.push(result);
+    linkList.value.push({
+      url: result.attributes.url,
+      name: result.attributes.name,
+    });
   }
 
   // 上传结束
