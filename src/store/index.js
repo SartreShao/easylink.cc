@@ -1,12 +1,12 @@
 import { ref, provide } from "vue";
 
-const isShowFinisheView = Symbol();
+const isShowFinishView = Symbol();
 
 function useProvider() {
-  provide(isShowFinisheView, ref(false));
+  provide(isShowFinishView, ref(false));
 }
 
 export default {
   useProvider,
-  isShowFinisheView,
+  isShowFinishView,
 };

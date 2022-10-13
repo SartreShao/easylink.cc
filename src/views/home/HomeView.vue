@@ -28,7 +28,10 @@
   </div>
 
   <!-- 链接列表：上传成功后弹出 -->
-  <link-list-dialog v-if="false" :link-list="linkList"></link-list-dialog>
+  <link-list-dialog
+    v-if="isShowFinishView"
+    :link-list="linkList"
+  ></link-list-dialog>
 </template>
 
 <script setup>
@@ -68,7 +71,6 @@ const currentUploadIndex = ref(0);
 const linkList = ref([]);
 
 // 是否显示完成上传弹窗
-// eslint-disable-next-line no-unused-vars
 const isShowFinishView = inject(Store.isShowFinishView);
 
 // 输入时间：上传的文件发生改变
@@ -80,6 +82,7 @@ const inputFileChanged = async (e) => {
     currentUploadIndex,
     currentUploadAmount,
     linkList,
+    isShowFinishView,
     inputFile
   );
 };

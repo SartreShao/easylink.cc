@@ -4,7 +4,7 @@
     <!-- 弹窗容器 -->
     <div class="dialog-container">
       <!-- 笑脸图标 -->
-      <icon-laugh-face class="icon-laugh-face"> </icon-laugh-face>
+      <icon-laugh-face class="icon-laugh-face"></icon-laugh-face>
 
       <!-- 主标题 -->
       <div class="main-title">{{ mainTitle }}</div>

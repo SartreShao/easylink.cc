@@ -31,6 +31,7 @@ const uploadFileList = async (
   currentUploadIndex,
   currentUploadAmount,
   linkList,
+  isShowFinishView,
   inputFile
 ) => {
   // 修改状态：当前正在上传文件
@@ -63,6 +64,9 @@ const uploadFileList = async (
 
   // 上传结束
   isUploading.value = false;
+
+  // 弹出弹窗
+  isShowFinishView.value = true;
 
   // 清空 input 组件内容（防止无法上传相同内容）
   inputFile.value.value = null;
