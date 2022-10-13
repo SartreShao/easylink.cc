@@ -22,7 +22,11 @@
       <!-- 一键复制 -->
       <div class="copy-button">一键复制</div>
 
-      <icon-close-dialog class="icon-close-dialog"></icon-close-dialog>
+      <!-- 关闭图标 -->
+      <icon-close-dialog
+        class="icon-close-dialog"
+        @click="closeDialog"
+      ></icon-close-dialog>
     </div>
   </div>
 </template>
@@ -31,13 +35,23 @@
 import IconLaughFace from "@/components/icons/IconLaughFace.vue";
 import IconCloseDialog from "@/components/icons/IconCloseDialog.vue";
 import LinkItem from "./LinkItem.vue";
-import { ref } from "vue";
+import { ref, inject } from "vue";
+import Store from "@/store";
 
 defineProps({
   linkList: [],
 });
 
+// 主标题文案
 const mainTitle = ref("永久云链已生成");
+
+// 是否显示弹窗
+const isShowFinishView = inject(Store.isShowFinishView);
+
+// 点击关闭啊按钮
+const closeDialog = () => {
+  isShowFinishView.value = false;
+};
 </script>
 
 <style lang="scss" scoped>
