@@ -4,7 +4,7 @@
     <div class="link-item">
       <div class="text-link">链接</div>
 
-      <div class="url">{{ url }}</div>
+      <div class="url" @click="clickUrl(url)">{{ url }}</div>
 
       <div class="button-copy">复制</div>
     </div>
@@ -19,6 +19,11 @@ defineProps({
   url: String,
   name: String,
 });
+
+// 点击事件：点击 URL
+const clickUrl = (url) => {
+  window.open(url);
+};
 </script>
 
 <style lang="scss" scoped>
