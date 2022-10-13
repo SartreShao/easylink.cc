@@ -21,12 +21,15 @@
 
       <!-- 一键复制 -->
       <div class="copy-button">一键复制</div>
+
+      <icon-close-dialog class="icon-close-dialog"></icon-close-dialog>
     </div>
   </div>
 </template>
 
 <script setup>
 import IconLaughFace from "@/components/icons/IconLaughFace.vue";
+import IconCloseDialog from "@/components/icons/IconCloseDialog.vue";
 import LinkItem from "./LinkItem.vue";
 import { ref } from "vue";
 
@@ -53,6 +56,7 @@ const mainTitle = ref("永久云链已生成");
 }
 
 .dialog-container {
+  position: relative;
   width: 28.28vw;
   height: 70.83vh;
   background: #262626;
@@ -61,7 +65,6 @@ const mainTitle = ref("永久云链已生成");
   display: flex;
   flex-direction: column;
   align-items: center;
-
   .icon-laugh-face {
     width: 3.7vh;
     height: 2.56vh;
@@ -99,6 +102,15 @@ const mainTitle = ref("永久云链已生成");
     font-size: 2.04vh;
     color: #ffffff;
     font-family: "思源黑体 Medium";
+  }
+
+  .icon-close-dialog {
+    position: absolute;
+    width: 3.7vh;
+    height: 3.7vh;
+    right: -1.85vh;
+    top: -1.85vh;
+    cursor: pointer;
   }
 }
 </style>
