@@ -6,7 +6,7 @@
 
       <div class="url" @click="clickUrl(url)">{{ url }}</div>
 
-      <div class="button-copy">复制</div>
+      <div class="button-copy" @click="clickCopyUrl(url)">复制</div>
     </div>
 
     <!-- 链接名称 -->
@@ -23,6 +23,11 @@ defineProps({
 // 点击事件：点击 URL
 const clickUrl = (url) => {
   window.open(url);
+};
+
+// 点击事件：点击复制 url
+const clickCopyUrl = (url) => {
+  navigator.clipboard.writeText(url);
 };
 </script>
 
