@@ -31,7 +31,7 @@ const clickUrl = (url) => {
 const clickCopyUrl = (url) => {
   navigator.clipboard.writeText(url);
   ElMessage({
-    message: "已复制至剪切板",
+    message: "链接已复制",
     type: "success",
   });
 };
