@@ -96,11 +96,6 @@ watchEffect(() => {
     currentProgress
   );
 });
-
-// 观察 linkList
-watchEffect(() => {
-  console.log("linkList", linkList.value);
-});
 </script>
 
 <style scoped lang="scss">
