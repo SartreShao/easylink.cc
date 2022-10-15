@@ -38,6 +38,7 @@ import LinkItem from "./LinkItem.vue";
 import { ref, inject } from "vue";
 import Store from "@/store";
 import { ElMessage } from "element-plus";
+import HomeVM from "@/viewmodels/HomeVM";
 
 // 定义传入参数
 defineProps({
@@ -52,7 +53,7 @@ const isShowLinkListDialog = inject(Store.isShowLinkListDialog);
 
 // 点击关闭啊按钮
 const closeDialog = () => {
-  isShowLinkListDialog.value = false;
+  HomeVM.closeLinkListDialog(isShowLinkListDialog);
 };
 
 // 复制全部Url

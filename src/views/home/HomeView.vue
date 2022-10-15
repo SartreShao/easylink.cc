@@ -29,7 +29,7 @@
 
   <!-- 链接列表：上传成功后弹出 -->
   <link-list-dialog
-    v-if="isShowFinishView"
+    v-if="isShowLinkListDialog"
     :link-list="linkList"
   ></link-list-dialog>
 </template>
@@ -71,7 +71,7 @@ const currentUploadIndex = ref(0);
 const linkList = ref([]);
 
 // 是否显示完成上传弹窗
-const isShowFinishView = inject(Store.isShowFinishView);
+const isShowLinkListDialog = inject(Store.isShowLinkListDialog);
 
 // 输入时间：上传的文件发生改变
 const inputFileChanged = async (e) => {
@@ -82,7 +82,7 @@ const inputFileChanged = async (e) => {
     currentUploadIndex,
     currentUploadAmount,
     linkList,
-    isShowFinishView,
+    isShowLinkListDialog,
     inputFile
   );
 };

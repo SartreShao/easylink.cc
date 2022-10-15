@@ -19,14 +19,14 @@ const uploadFile = async (name, file, currentProgress) => {
 
 /**
  * 上传文件列表
- * @param {*} fileList 
- * @param {*} isUploading 
- * @param {*} currentProgress 
- * @param {*} currentUploadIndex 
- * @param {*} currentUploadAmount 
- * @param {*} linkList 
- * @param {*} isShowLinkListDialog 
- * @param {*} inputFile 
+ * @param {*} fileList
+ * @param {*} isUploading
+ * @param {*} currentProgress
+ * @param {*} currentUploadIndex
+ * @param {*} currentUploadAmount
+ * @param {*} linkList
+ * @param {*} isShowLinkListDialog
+ * @param {*} inputFile
  */
 const uploadFileList = async (
   fileList,
@@ -96,8 +96,17 @@ const getUploadButtonText = (
       }）正在上传...${currentProgress.value.toFixed(2)}%`
     : "添加文件，转成云链";
 
+/**
+ * 关闭上传成功弹窗
+ * @param {*} isShowLinkListDialog
+ */
+const closeLinkListDialog = (isShowLinkListDialog) => {
+  console.log("closeLinkListDialog", isShowLinkListDialog);
+  isShowLinkListDialog.value = false;
+};
 
 export default {
   uploadFileList,
   getUploadButtonText,
+  closeLinkListDialog,
 };

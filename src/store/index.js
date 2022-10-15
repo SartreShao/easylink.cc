@@ -1,12 +1,12 @@
 import { ref, provide } from "vue";
 
-const isShowFinishView = Symbol();
+const isShowLinkListDialog = Symbol();
 
 function useProvider() {
-  provide(isShowFinishView, ref(false));
+  provide(isShowLinkListDialog, ref(false));
 }
 
 export default {
   useProvider,
-  isShowFinishView,
+  isShowLinkListDialog,
 };
