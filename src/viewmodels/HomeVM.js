@@ -19,10 +19,14 @@ const uploadFile = async (name, file, currentProgress) => {
 
 /**
  * 上传文件列表
- * @param {Ref<[]>} fileList
- * @param {Ref<Boolean>} isUploading
- * @param {Ref<Number>} currentProgress
- * @param {Ref<[]>} linkList
+ * @param {*} fileList 
+ * @param {*} isUploading 
+ * @param {*} currentProgress 
+ * @param {*} currentUploadIndex 
+ * @param {*} currentUploadAmount 
+ * @param {*} linkList 
+ * @param {*} isShowLinkListDialog 
+ * @param {*} inputFile 
  */
 const uploadFileList = async (
   fileList,
@@ -31,7 +35,7 @@ const uploadFileList = async (
   currentUploadIndex,
   currentUploadAmount,
   linkList,
-  isShowFinishView,
+  isShowLinkListDialog,
   inputFile
 ) => {
   // 修改状态：当前正在上传文件
@@ -66,12 +70,20 @@ const uploadFileList = async (
   isUploading.value = false;
 
   // 弹出弹窗
-  isShowFinishView.value = true;
+  isShowLinkListDialog.value = true;
 
   // 清空 input 组件内容（防止无法上传相同内容）
   inputFile.value.value = null;
 };
 
+/**
+ * 获取上传按钮文案
+ * @param {*} isUploading 当前是否正在上传
+ * @param {*} currentUploadAmount 当前总上传数量
+ * @param {*} currentUploadIndex 当前上传第几个文件
+ * @param {*} currentProgress 当前上传进度
+ * @returns
+ */
 const getUploadButtonText = (
   isUploading,
   currentUploadAmount,
@@ -83,6 +95,7 @@ const getUploadButtonText = (
         currentUploadAmount.value
       }）正在上传...${currentProgress.value.toFixed(2)}%`
     : "添加文件，转成云链";
+
 
 export default {
   uploadFileList,

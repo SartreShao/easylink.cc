@@ -39,6 +39,7 @@ import { ref, inject } from "vue";
 import Store from "@/store";
 import { ElMessage } from "element-plus";
 
+// 定义传入参数
 defineProps({
   linkList: [],
 });
@@ -47,11 +48,11 @@ defineProps({
 const mainTitle = ref("永久云链已生成");
 
 // 是否显示弹窗
-const isShowFinishView = inject(Store.isShowFinishView);
+const isShowLinkListDialog = inject(Store.isShowLinkListDialog);
 
 // 点击关闭啊按钮
 const closeDialog = () => {
-  isShowFinishView.value = false;
+  isShowLinkListDialog.value = false;
 };
 
 // 复制全部Url
