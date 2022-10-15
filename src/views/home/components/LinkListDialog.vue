@@ -37,12 +37,12 @@ import IconCloseDialog from "@/components/icons/IconCloseDialog.vue";
 import LinkItem from "./LinkItem.vue";
 import { ref, inject } from "vue";
 import Store from "@/store";
-import { ElMessage } from "element-plus";
 import HomeVM from "@/viewmodels/HomeVM";
+import { ElMessage } from "element-plus";
 
 // 定义传入参数
 defineProps({
-  linkList: [],
+  linkList: Array,
 });
 
 // 主标题文案
@@ -58,15 +58,7 @@ const closeDialog = () => {
 
 // 复制全部Url
 const copyAllUrl = (linkList) => {
-  let copyText = "";
-  linkList.forEach(
-    (link) => (copyText += `文件名：${link.name}\n轻松云链：${link.url}\n\n`)
-  );
-  navigator.clipboard.writeText(copyText);
-  ElMessage({
-    message: "全部链接已复制",
-    type: "success",
-  });
+  HomeVM.copyAllUrl(ElMessage, linkList);
 };
 </script>
 

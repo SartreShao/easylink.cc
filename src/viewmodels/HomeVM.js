@@ -105,8 +105,23 @@ const closeLinkListDialog = (isShowLinkListDialog) => {
   isShowLinkListDialog.value = false;
 };
 
+const copyAllUrl = (ElMessage, linkList) => {
+  let copyText = "";
+  linkList.forEach(
+    (link) => (copyText += `文件名：${link.name}\n云链接：${link.url}\n\n`)
+  );
+  navigator.clipboard.writeText(
+    "轻松云链 easylink.cc：轻松上传，简单分享\n\n" + copyText
+  );
+  ElMessage({
+    message: "全部链接已复制",
+    type: "success",
+  });
+};
+
 export default {
   uploadFileList,
   getUploadButtonText,
   closeLinkListDialog,
+  copyAllUrl,
 };
