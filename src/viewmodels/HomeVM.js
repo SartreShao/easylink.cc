@@ -100,9 +100,24 @@ const getUploadButtonText = (
  * 关闭上传成功弹窗
  * @param {*} isShowLinkListDialog
  */
-const closeLinkListDialog = (isShowLinkListDialog) => {
-  console.log("closeLinkListDialog", isShowLinkListDialog);
-  isShowLinkListDialog.value = false;
+const closeLinkListDialog = async (isShowLinkListDialog, ElMessageBox) => {
+  try {
+    // 告知用户该弹窗仅弹出一次
+    await ElMessageBox.confirm(
+      "该弹窗仅出现一次，请确保复制并保存好文件链接",
+      "是否关闭弹窗？",
+      {
+        confirmButtonText: "确认",
+        cancelButtonText: "取消",
+        type: "warning",
+      }
+    );
+
+    // 关闭弹窗
+    isShowLinkListDialog.value = false;
+  } catch (error) {
+    // doing nothing
+  }
 };
 
 const copyAllUrl = (ElMessage, linkList) => {
