@@ -40,7 +40,6 @@ const clickCopyUrl = (url) => {
 <style lang="scss" scoped>
 .link-item-container {
   width: 23.7vw;
-  height: 9.54vh;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
