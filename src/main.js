@@ -6,9 +6,9 @@ import ElementPlus from "element-plus";
 import "element-plus/dist/index.css";
 
 AV.init({
-  appId: "Eg39w11lqO8cv6GPphyxCQRF-gzGzoHsz",
-  appKey: "6es1crbDK0vqy7NQNelNmBuI",
-  serverURL: "https://ishaolizhi.api.hearfresh.cn",
+  appId: "jxAoTGx9FuLNOT1dmc46b78h-MdYXbMMI",
+  appKey: "6sUyBR0CimL4DDSdEdgyAZZh",
+  serverURL: "https://api.easylink.cc",
 });
 
 const app = createApp(App);
