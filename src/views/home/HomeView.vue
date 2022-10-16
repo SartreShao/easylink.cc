@@ -190,7 +190,7 @@ watchEffect(() => {
 
     &:hover {
       transition: all 0.15s linear;
-      margin-left: -1vw;
+      margin-left: 1vw;
     }
   }
 }
