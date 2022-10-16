@@ -6,7 +6,7 @@
 
       <div class="url" @click="clickUrl(url)">{{ url }}</div>
 
-      <div class="button-copy" @click="clickCopyUrl(url)">复制</div>
+      <div class="button-copy" @click="clickCopyUrl(url)">{{ buttonText }}</div>
     </div>
 
     <!-- 链接名称 -->
@@ -16,11 +16,14 @@
 
 <script setup>
 import { ElMessage } from "element-plus";
+import { ref } from "vue";
 
 defineProps({
   url: String,
   name: String,
 });
+
+const buttonText = ref("复制");
 
 // 点击事件：点击 URL
 const clickUrl = (url) => {
@@ -29,6 +32,7 @@ const clickUrl = (url) => {
 
 // 点击事件：点击复制 url
 const clickCopyUrl = (url) => {
+  buttonText.value = "已复制";
   navigator.clipboard.writeText(url);
   ElMessage({
     message: "链接已复制",
