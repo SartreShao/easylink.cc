@@ -42,69 +42,139 @@ const clickCopyUrl = (url) => {
 </script>
 
 <style lang="scss" scoped>
-.link-item-container {
-  width: 23.7vw;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  margin-bottom: 3.52vh;
-
-  .link-item {
+@media only screen and (orientation: landscape) {
+  .link-item-container {
     width: 23.7vw;
-    height: 6.57vh;
-    background: #ffffff;
-    border-radius: 0.46vh;
     display: flex;
-    align-items: center;
-    position: relative;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 3.52vh;
 
-    .text-link {
-      margin-left: 1.2vw;
-      margin-right: 1.2vw;
-      font-size: 1.85vh;
-      font-family: "思源黑体 Regular";
-      color: #252525;
-    }
-
-    .url {
-      width: 13.33vw;
-      color: #2564dd;
-      font-size: 1.85vh;
-      font-family: "思源黑体 Regular";
-      cursor: pointer;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-      overflow: hidden;
-    }
-
-    .button-copy {
-      position: absolute;
-      right: 0.52vw;
-      top: 0;
-      bottom: 0;
-      margin-top: auto;
-      margin-bottom: auto;
-      background: #19725e;
-      width: 4.27vw;
-      height: 4.81vh;
+    .link-item {
+      width: 23.7vw;
+      height: 6.57vh;
+      background: #ffffff;
+      border-radius: 0.46vh;
       display: flex;
       align-items: center;
-      justify-content: center;
-      border-radius: 0.28vh;
-      box-shadow: 0 0.28vh 0.56vh rgba(0, 0, 0, 0.16);
+      position: relative;
+
+      .text-link {
+        margin-left: 1.2vw;
+        margin-right: 1.2vw;
+        font-size: 1.85vh;
+        font-family: "思源黑体 Regular";
+        color: #252525;
+      }
+
+      .url {
+        width: 13.33vw;
+        color: #2564dd;
+        font-size: 1.85vh;
+        font-family: "思源黑体 Regular";
+        cursor: pointer;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+
+      .button-copy {
+        position: absolute;
+        right: 0.52vw;
+        top: 0;
+        bottom: 0;
+        margin-top: auto;
+        margin-bottom: auto;
+        background: #19725e;
+        width: 4.27vw;
+        height: 4.81vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 0.28vh;
+        box-shadow: 0 0.28vh 0.56vh rgba(0, 0, 0, 0.16);
+        font-family: "思源黑体 Medium";
+        font-size: 1.76vh;
+        color: #ffffff;
+        cursor: pointer;
+      }
+    }
+
+    .link-name {
+      margin-top: 0.28vh;
+      margin-left: 0.36vw;
       font-family: "思源黑体 Medium";
-      font-size: 1.76vh;
+      font-size: 1.85vh;
       color: #ffffff;
-      cursor: pointer;
     }
   }
+}
 
-  .link-name {
-    margin-top: 0.28vh;
-    margin-left: 0.36vw;
-    font-family: "思源黑体 Medium";
-    font-size: 1.85vh;
-    color: #ffffff;
+@media only screen and (orientation: portrait) {
+  .link-item-container {
+    width: 77.6vw;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 2.96vh;
+
+    .link-item {
+      width: 77.6vw;
+      height: 5.56vh;
+      background: #ffffff;
+      border-radius: 0.46vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+
+      .text-link {
+        margin-left: 4vw;
+        margin-right: 4vw;
+        font-size: 1.57vh;
+        font-family: "思源黑体 Regular";
+        color: #252525;
+      }
+
+      .url {
+        width: 43.4vw;
+        color: #2564dd;
+        font-size: 1.57vh;
+        font-family: "思源黑体 Regular";
+        cursor: pointer;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+
+      .button-copy {
+        position: absolute;
+        right: 1.8vw;
+        top: 0;
+        bottom: 0;
+        margin-top: auto;
+        margin-bottom: auto;
+        background: #19725e;
+        width: 14vw;
+        height: 4.17vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 0.28vh;
+        box-shadow: 0 0.28vh 0.56vh rgba(0, 0, 0, 0.16);
+        font-family: "思源黑体 Medium";
+        font-size: 1.39vh;
+        color: #ffffff;
+        cursor: pointer;
+      }
+    }
+
+    .link-name {
+      margin-top: 0.28vh;
+      margin-left: 1.2vw;
+      font-family: "思源黑体 Medium";
+      font-size: 1.57vh;
+      color: #ffffff;
+    }
   }
 }
 </style>
