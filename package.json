@@ -9,7 +9,6 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
   },
   "dependencies": {
-    "clipboard": "^2.0.11",
     "element-plus": "^2.2.18",
     "leancloud-storage": "^4.13.2",
     "vue": "^3.2.38",
