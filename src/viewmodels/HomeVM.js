@@ -1,4 +1,5 @@
 import Api from "@/model/api";
+import useClipboard from "vue-clipboard3";
 
 /**
  * 上传文件
@@ -125,33 +126,49 @@ const closeLinkListDialog = async (isShowLinkListDialog, ElMessageBox) => {
  * @param {*} ElMessage
  * @param {*} linkList
  */
-const copyAllUrl = (ElMessage, linkList) => {
+const copyAllUrl = async (ElMessage, linkList) => {
   let copyText = "";
   linkList.forEach(
     (link) => (copyText += `文件名：${link.name}\n云链接：${link.url}\n\n`)
   );
-  navigator.clipboard.writeText(
-    "轻松云链 easylink.cc：轻松上传，简单分享\n\n" + copyText
-  );
-  ElMessage({
-    message: "全部链接已复制",
-    type: "success",
-  });
+  const { toClipboard } = useClipboard();
+  try {
+    await toClipboard(
+      "轻松云链 easylink.cc：轻松上传，简单分享\n\n" + copyText
+    );
+    ElMessage({
+      message: "全部链接已复制",
+      type: "success",
+    });
+  } catch (error) {
+    ElMessage({
+      message: "链接复制失败",
+      type: "error",
+    });
+  }
 };
 
 /**
- * 
- * @param {*} ElMessage 
- * @param {*} url 
- * @param {*} buttonText 
+ *
+ * @param {*} ElMessage
+ * @param {*} url
+ * @param {*} buttonText
  */
-const copyUrl = (ElMessage, url, buttonText) => {
-  buttonText.value = "已复制";
-  navigator.clipboard.writeText(url);
-  ElMessage({
-    message: "链接已复制",
-    type: "success",
-  });
+const copyUrl = async (ElMessage, url, buttonText) => {
+  const { toClipboard } = useClipboard();
+  try {
+    await toClipboard(url);
+    buttonText.value = "已复制";
+    ElMessage({
+      message: "链接已复制",
+      type: "success",
+    });
+  } catch (error) {
+    ElMessage({
+      message: "链接复制失败",
+      type: "error",
+    });
+  }
 };
 
 export default {
