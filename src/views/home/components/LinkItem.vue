@@ -17,6 +17,7 @@
 <script setup>
 import { ElMessage } from "element-plus";
 import { ref } from "vue";
+import HomeVM from "@/viewmodels/HomeVM";
 
 defineProps({
   url: String,
@@ -32,12 +33,7 @@ const clickUrl = (url) => {
 
 // 点击事件：点击复制 url
 const clickCopyUrl = (url) => {
-  buttonText.value = "已复制";
-  navigator.clipboard.writeText(url);
-  ElMessage({
-    message: "链接已复制",
-    type: "success",
-  });
+  HomeVM.copyUrl(ElMessage, url, buttonText);
 };
 </script>
 

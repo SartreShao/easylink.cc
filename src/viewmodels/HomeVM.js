@@ -120,6 +120,11 @@ const closeLinkListDialog = async (isShowLinkListDialog, ElMessageBox) => {
   }
 };
 
+/**
+ * 复制所有的 URL
+ * @param {*} ElMessage
+ * @param {*} linkList
+ */
 const copyAllUrl = (ElMessage, linkList) => {
   let copyText = "";
   linkList.forEach(
@@ -134,9 +139,25 @@ const copyAllUrl = (ElMessage, linkList) => {
   });
 };
 
+/**
+ * 
+ * @param {*} ElMessage 
+ * @param {*} url 
+ * @param {*} buttonText 
+ */
+const copyUrl = (ElMessage, url, buttonText) => {
+  buttonText.value = "已复制";
+  navigator.clipboard.writeText(url);
+  ElMessage({
+    message: "链接已复制",
+    type: "success",
+  });
+};
+
 export default {
   uploadFileList,
   getUploadButtonText,
   closeLinkListDialog,
   copyAllUrl,
+  copyUrl,
 };
