@@ -5,7 +5,11 @@
   <!-- 主 Containter -->
   <div class="home-container">
     <!-- logo -->
-    <img class="logo" src="../../assets/logo.png" />
+    <div class="logo-container">
+      <img class="logo" src="../../assets/logo.png" />
+
+      <div class="title">简单云链</div>
+    </div>
 
     <!-- button -->
     <div class="button" @click="clickButton">
@@ -124,11 +128,19 @@ watchEffect(() => {
   justify-content: center;
   align-items: left;
 
-  .logo {
-    object-fit: scale-down;
-    transition: all 0.15s linear;
-    width: 39.81vh;
-    height: 23.33vh;
+  .logo-container {
+    .logo {
+      object-fit: scale-down;
+      transition: all 0.15s linear;
+      width: 39.81vh;
+      height: 17.22vh;
+    }
+
+    .title {
+      font-size: 4.26vh;
+      color: white;
+      font-family: "思源黑体 Bold";
+    }
 
     &:hover {
       transition: all 0.15s linear;
