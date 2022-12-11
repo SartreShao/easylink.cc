@@ -130,7 +130,6 @@ watchEffect(() => {
 
   .logo-container {
     .logo {
-      object-fit: scale-down;
       transition: all 0.15s linear;
       width: 39.81vh;
       height: 17.22vh;
